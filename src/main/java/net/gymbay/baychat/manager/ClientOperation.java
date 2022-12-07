@@ -1,11 +1,14 @@
 package net.gymbay.baychat.manager;
 
 import net.gymbay.baychat.receive.ReceiveHello;
+import net.gymbay.baychat.receive.ReceiveIdentify;
 import net.gymbay.baychat.send.SendHello;
 
 public enum ClientOperation {
 
-    HELLO(1, new ReceiveHello(), new SendHello());
+    HELLO(1, new ReceiveHello(), new SendHello()),
+    IDENTIFY(2,new ReceiveIdentify(), null);
+
 
     private final Integer opcode;
     private final ReceiveHandler receiveHandler;
@@ -27,4 +30,17 @@ public enum ClientOperation {
     public SendHandler getSendHandler() {
         return sendHandler;
     }
+
+    public static ClientOperation getClientOperation(int opCode){
+
+       for(ClientOperation clientOperation : values()){
+          if(opCode == clientOperation.getOpcode()){
+              return clientOperation;
+          }
+       }
+
+       return null;
+
+    }
+
 }

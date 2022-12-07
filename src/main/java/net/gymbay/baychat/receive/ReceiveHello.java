@@ -9,7 +9,7 @@ import net.gymbay.baychat.util.CloseCode;
 public class ReceiveHello implements ReceiveHandler {
 
     @Override
-    public void handleReceive(ClientSession session) {
+    public void handleReceive(ClientSession session, String message) {
 
         if (session.sadHello()) {
             ClientHandler.closeSession(session.getSession(), CloseCode.INVALID_SESSION);

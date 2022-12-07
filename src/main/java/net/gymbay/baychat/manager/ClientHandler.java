@@ -40,4 +40,21 @@ public class ClientHandler {
     }
 
 
+    public static ClientSession getClientSession(Session session){
+
+        for(ClientSession clientSession : moduleSessionList){
+
+            if(clientSession.getSession()== session){
+
+              return clientSession;
+
+
+            }
+
+        }
+
+        return null;
+
+    }
+
 }

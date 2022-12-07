@@ -34,4 +34,6 @@ public class ClientSession {
         var future = this.getSession().getAsyncRemote().sendText(text);
         if (future.isCancelled()) this.send(text);
      }
+
+
 }
