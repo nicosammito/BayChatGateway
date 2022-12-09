@@ -1,13 +1,17 @@
 package net.gymbay.baychat.manager;
 
+import net.gymbay.baychat.receive.ReceiveHeartbeat;
 import net.gymbay.baychat.receive.ReceiveHello;
 import net.gymbay.baychat.receive.ReceiveIdentify;
+import net.gymbay.baychat.send.SendHeartbeat;
 import net.gymbay.baychat.send.SendHello;
+import net.gymbay.baychat.send.SendIdentify;
 
 public enum ClientOperation {
 
     HELLO(1, new ReceiveHello(), new SendHello()),
-    IDENTIFY(2,new ReceiveIdentify(), null);
+    IDENTIFY(2,new ReceiveIdentify(), new SendIdentify()),
+    HEARTBEAT(3, new ReceiveHeartbeat(), new SendHeartbeat());
 
 
     private final Integer opcode;

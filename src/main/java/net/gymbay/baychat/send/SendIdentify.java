@@ -5,15 +5,16 @@ import net.gymbay.baychat.manager.SendHandler;
 import net.gymbay.baychat.util.ClientSession;
 import org.json.JSONObject;
 
-public class SendHello implements SendHandler {
+public class SendIdentify implements SendHandler {
 
     @Override
     public void handleSend(ClientSession session) {
         final var mainObject = new JSONObject();
-        mainObject.append("op", ClientOperation.HELLO.getOpcode());
+        mainObject.append("op", ClientOperation.IDENTIFY.getOpcode());
         mainObject.append("d", "");
-        mainObject.append("t", "HELLO");
+        mainObject.append("t", "IDENTIFY");
 
         session.send(mainObject.toString());
     }
+
 }

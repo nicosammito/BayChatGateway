@@ -5,11 +5,12 @@ import net.gymbay.baychat.manager.ClientOperation;
 import net.gymbay.baychat.manager.ReceiveHandler;
 import net.gymbay.baychat.util.ClientSession;
 import net.gymbay.baychat.util.CloseCode;
+import org.json.JSONObject;
 
 public class ReceiveHello implements ReceiveHandler {
 
     @Override
-    public void handleReceive(ClientSession session, String message) {
+    public void handleReceive(ClientSession session, JSONObject message) {
 
         if (session.sadHello()) {
             ClientHandler.closeSession(session.getSession(), CloseCode.INVALID_SESSION);
@@ -22,6 +23,7 @@ public class ReceiveHello implements ReceiveHandler {
         }
 
 
+        session.setHello();
         ClientOperation.HELLO.getSendHandler().handleSend(session);
 
     }

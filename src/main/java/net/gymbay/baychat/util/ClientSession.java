@@ -7,6 +7,7 @@ public class ClientSession {
     private byte sadHello = 0;
     private byte isAuthenticated = 0;
     private final Session session;
+
     public ClientSession(Session session){
         this.session = session;
     }

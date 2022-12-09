@@ -1,5 +1,7 @@
 package net.gymbay.baychat;
 
+import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.security.Keys;
 import jakarta.websocket.DeploymentException;
 import jakarta.ws.rs.SeBootstrap;
 import net.gymbay.baychat.endpoints.ClientAPI;
@@ -9,10 +11,13 @@ import org.glassfish.tyrus.client.ClientProperties;
 import org.glassfish.tyrus.container.grizzly.client.GrizzlyClientProperties;
 import org.glassfish.tyrus.server.Server;
 
+import java.security.Key;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Gateway {
+
+    public static final Key SECRETE_TOKEN = Keys.secretKeyFor(SignatureAlgorithm.HS256);
 
     public static void main(String[] args) throws DeploymentException {
         Map<String, Object> map = new HashMap<>();
